@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir> <env-dir>
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+ENV_DIR=$3
+
+BIN_DIR=$BUILD_DIR/.gauge/bin
+mkdir -p $BIN_DIR
+
+function topic() {
+  echo "-----> $*"
+}
+
+if [ -f $ENV_DIR/GAUGE_VERSION ]; then
+  VERSION=$(cat $ENV_DIR/GAUGE_VERSION)
+else
+  VERSION="1.0.4"
+fi
+echo "Version $VERSION"
+
+topic "Downloading Gauge v$VERSION"
+ZIP_URL="https://github.com/getgauge/gauge/releases/download/v$VERSION/gauge-$VERSION-linux.x86_64.zip"
+ZIP_LOCATION="tmp/gauge-$VERSION-linux.zip"
+wget $ZIP_URL -O $ZIP_LOCATION && unzip $ZIP_LOCATION -d bin
