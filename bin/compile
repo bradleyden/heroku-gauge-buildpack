@@ -22,4 +22,4 @@ echo "Version $VERSION"
 topic "Downloading Gauge v$VERSION"
 ZIP_URL="https://github.com/getgauge/gauge/releases/download/v$VERSION/gauge-$VERSION-linux.x86_64.zip"
 ZIP_LOCATION="/tmp/gauge-$VERSION-linux.zip"
-wget $ZIP_URL -O $ZIP_LOCATION && unzip $ZIP_LOCATION -d bin
+wget $ZIP_URL -O $ZIP_LOCATION && unzip $ZIP_LOCATION -d $BIN_DIR
